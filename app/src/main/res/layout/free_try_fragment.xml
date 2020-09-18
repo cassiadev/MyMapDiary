@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mmp.mymapdiary.data.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/free_try_fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+        tools:context=".ui.main.FreeTryFragment">
+
+        <TextView
+            android:id="@+id/freeTry_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/freeTry_allCaps"
+            android:textSize="60sp"
+            app:layout_constraintBottom_toTopOf="@id/freeTry_practice_observer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/freeTry_practice_observer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/freeTry_practice_regex"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/freeTry_title">
+
+            <TextView
+                android:id="@+id/freeTry_observer_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.viewModelText}" />
+
+            <TextView
+                android:id="@+id/freeTry_observer_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{Integer.toString(viewModel.viewModelCounter)}" />
+
+            <Button
+                android:id="@+id/freeTry_observer_buttonMinus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.decrease()}"
+                android:text="@string/minus" />
+
+            <Button
+                android:id="@+id/freeTry_observer_buttonPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.increase()}"
+                android:text="@string/plus" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/freeTry_practice_regex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/freeTry_practice_apollo_graphql"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/freeTry_practice_observer">
+
+            <TextView
+                android:id="@+id/freeTry_regex_result"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/freeTry_result_hint"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/freeTry_regex_input"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/textType_anyString"
+                android:hint="@string/freeTry_inputText"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/freeTry_regex_buttonApply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/freeTry_apply_allCaps" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/freeTry_practice_apollo_graphql"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/freeTry_practice_regex">
+
+            <TextView
+                android:id="@+id/freeTry_apolloGraphql_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/freeTry_result_hint"
+                android:text="" />
+
+            <Button
+                android:id="@+id/freeTry_apolloGraphql_buttonCall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/freeTry_call_in_graphql_data"
+                android:onClick="@{() -> viewModel.callInGraphQLData()}"/>
+
+            <Button
+                android:id="@+id/freeTry_apolloGraphql_buttonMutate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/freeTry_mutate_graphql_data"
+                android:onClick="@{() -> viewModel.mutateGraphQLData()}"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

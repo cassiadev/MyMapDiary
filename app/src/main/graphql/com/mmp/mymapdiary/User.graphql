@@ -1,0 +1,16 @@
+query User {
+  user(email: "nanana@nanana.com"){
+    id
+    email
+    pwd
+    c_date
+  }
+}
+
+mutation createUser {
+  createUser(email:"nanana@nanana.com", pwd: "nananapwd") {
+    id
+    email
+    pwd
+  }
+}

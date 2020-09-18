@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+<!--    <domain-config>-->
+<!--        <domain includeSubdomains="true">-->
+<!--            http://ec2-18-214-130-252.compute-1.amazonaws.com:4002/graphql-->
+<!--        </domain>-->
+<!--    </domain-config>-->
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

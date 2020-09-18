@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mmp.mymapdiary.data.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainFragment">
+
+        <Button
+            android:id="@+id/button_goToFreeTryFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/freeTry_allCaps"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/main_noticesList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/main_expressMainViewModel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_goToFreeTryFragment" />
+
+        <TextView
+            android:id="@+id/main_expressMainViewModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.viewModelText}"
+            app:layout_constraintBottom_toTopOf="@id/main_title"
+            app:layout_constraintEnd_toStartOf="@id/main_expressMainViewModel_test1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_noticesList" />
+
+        <TextView
+            android:id="@+id/main_expressMainViewModel_test1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(viewModel.viewModelCounter)}"
+            app:layout_constraintBottom_toTopOf="@id/main_title"
+            app:layout_constraintEnd_toStartOf="@id/main_expressMainViewModel_button1"
+            app:layout_constraintStart_toEndOf="@id/main_expressMainViewModel"
+            app:layout_constraintTop_toBottomOf="@id/main_noticesList" />
+
+        <Button
+            android:id="@+id/main_expressMainViewModel_button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.decrease()}"
+            android:text="@string/minus"
+            app:layout_constraintBottom_toTopOf="@id/main_title"
+            app:layout_constraintEnd_toStartOf="@id/main_expressMainViewModel_button2"
+            app:layout_constraintStart_toEndOf="@id/main_expressMainViewModel_test1"
+            app:layout_constraintTop_toBottomOf="@id/main_noticesList" />
+
+        <Button
+            android:id="@+id/main_expressMainViewModel_button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.increase()}"
+            android:text="@string/plus"
+            app:layout_constraintBottom_toTopOf="@id/main_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/main_expressMainViewModel_button1"
+            app:layout_constraintTop_toBottomOf="@id/main_noticesList" />
+
+        <TextView
+            android:id="@+id/main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            android:text="@string/app_name"
+            android:textSize="50sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="225dp"
+            android:contentDescription="@string/background_picture"
+            android:src="@mipmap/my_map_diary_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

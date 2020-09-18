@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MyMapDiary</string>
+    <string name="background_picture">my_map_diary_bg</string>
+    <string name="textType_anyString">Any String</string>
+    <string name="textFromViewModel_hint">The text from ViewModel will be shown here.</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+
+    <!--free_try_fragment-->
+    <string name="freeTry_allCaps">FREE TRY</string>
+    <string name="freeTry_inputText">Input any text.</string>
+    <string name="freeTry_result_hint">The result will be shown here.</string>
+    <string name="freeTry_apply_allCaps">APPLY</string>
+    <string name="freeTry_call_in_graphql_data">Call in GraphQL data</string>
+    <string name="freeTry_mutate_graphql_data">Mutate GraphQL data</string>
+</resources>
