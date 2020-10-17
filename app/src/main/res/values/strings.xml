@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">MyMapDiary</string>
+    <string name="main_introductionText">Long live your place of memoir.</string>
     <string name="background_picture">my_map_diary_bg</string>
     <string name="textType_anyString">Any String</string>
     <string name="textFromViewModel_hint">The text from ViewModel will be shown here.</string>

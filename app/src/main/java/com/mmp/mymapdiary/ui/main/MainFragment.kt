@@ -36,7 +36,7 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         mainViewModel.viewModelText.observe(activity as LifecycleOwner,
             Observer {
-                binding.mainExpressMainViewModel.text = it
+                binding.mainExpressMainViewModelText.text = it
             }
         )
         mainViewModel.viewModelCounter.observe(activity as LifecycleOwner,
