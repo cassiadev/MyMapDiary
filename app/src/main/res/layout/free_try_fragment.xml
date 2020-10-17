@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -10,7 +9,7 @@
             type="com.mmp.mymapdiary.data.main.MainViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:id="@+id/free_try_fragment_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,35 +21,34 @@
             android:id="@+id/freeTry_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:paddingVertical="20dp"
             android:text="@string/freeTry_allCaps"
-            android:textSize="60sp"
-            app:layout_constraintBottom_toTopOf="@id/freeTry_practice_observer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="60sp" />
 
         <LinearLayout
-            android:id="@+id/freeTry_practice_observer"
+            android:id="@+id/freeTry_observer_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_below="@id/freeTry_title"
             android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@id/freeTry_practice_regex"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/freeTry_title">
+            android:orientation="horizontal"
+            android:paddingVertical="10dp">
 
             <TextView
                 android:id="@+id/freeTry_observer_text"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.viewModelText}" />
 
             <TextView
                 android:id="@+id/freeTry_observer_number"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:text="@{Integer.toString(viewModel.viewModelCounter)}" />
+                android:layout_marginEnd="20dp"
+                android:text="@{Integer.toString(viewModel.viewModelCounter)}"
+                android:textAlignment="viewEnd" />
 
             <Button
                 android:id="@+id/freeTry_observer_buttonMinus"
@@ -69,15 +67,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/freeTry_practice_regex"
+            android:id="@+id/freeTry_regex_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_below="@id/freeTry_observer_layout"
             android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@id/freeTry_practice_apollo_graphql"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/freeTry_practice_observer">
+            android:orientation="vertical"
+            android:paddingVertical="10dp">
 
             <TextView
                 android:id="@+id/freeTry_regex_result"
@@ -103,15 +99,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/freeTry_practice_apollo_graphql"
+            android:id="@+id/freeTry_apollo_graphql_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_below="@id/freeTry_regex_layout"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/freeTry_practice_regex">
+            android:orientation="vertical"
+            android:paddingVertical="10dp">
 
             <TextView
                 android:id="@+id/freeTry_apolloGraphql_result"
@@ -124,17 +118,17 @@
                 android:id="@+id/freeTry_apolloGraphql_buttonCall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/freeTry_call_in_graphql_data"
-                android:onClick="@{() -> viewModel.callInGraphQLData()}"/>
+                android:onClick="@{() -> viewModel.callInGraphQLData()}"
+                android:text="@string/freeTry_call_in_graphql_data" />
 
             <Button
                 android:id="@+id/freeTry_apolloGraphql_buttonMutate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/freeTry_mutate_graphql_data"
-                android:onClick="@{() -> viewModel.mutateGraphQLData()}"/>
+                android:onClick="@{() -> viewModel.mutateGraphQLData()}"
+                android:text="@string/freeTry_mutate_graphql_data" />
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </layout>
