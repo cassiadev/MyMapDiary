@@ -121,6 +121,11 @@
                 android:onClick="@{() -> viewModel.callInGraphQLData()}"
                 android:text="@string/freeTry_call_in_graphql_data" />
 
+            <EditText
+                android:id="@+id/freeTry_apolloGraphql_inputId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/freeTry_apolloGraphql_buttonMutate"
                 android:layout_width="wrap_content"

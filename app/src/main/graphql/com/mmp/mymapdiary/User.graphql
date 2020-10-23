@@ -1,16 +1,7 @@
-query User {
-  user(email: "nanana@nanana.com"){
+query SelectAllUsers{
+  users{
     id
     email
-    pwd
     c_date
-  }
-}
-
-mutation createUser {
-  createUser(email:"nanana@nanana.com", pwd: "nananapwd") {
-    id
-    email
-    pwd
   }
 }

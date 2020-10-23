@@ -1,0 +1,23 @@
+query SelectAllMaps{
+    maps{
+        id
+        userId
+        userHash
+        title
+        description
+        c_date
+    }
+}
+
+mutation CreateMap{
+    createMap(user:{
+        userId: "Gary"
+        email: "gary@gary.com"
+        nickname: "Garygary"
+        description: "User to be input for createMap for Gary"
+    }){
+        id
+        userId
+        title
+    }
+}

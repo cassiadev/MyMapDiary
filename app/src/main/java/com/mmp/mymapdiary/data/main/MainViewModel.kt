@@ -1,6 +1,7 @@
 package com.mmp.mymapdiary.data.main
 
 import android.text.Editable
+import android.text.Selection
 import android.util.Log
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.*
@@ -8,9 +9,8 @@ import com.apollographql.apollo.ApolloCall
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.exception.ApolloException
-import com.mmp.mymapdiary.CreateUserMutation
-import com.mmp.mymapdiary.R
-import com.mmp.mymapdiary.UserQuery
+import com.mmp.mymapdiary.CreateMapMutation
+import com.mmp.mymapdiary.SelectAllUsersQuery
 import kotlinx.android.synthetic.main.free_try_fragment.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit
 
 fun callOkHttpApolloClient(): ApolloClient? {
     val baseUrl =
-        "http://ec2-18-208-222-183.compute-1.amazonaws.com:4002/graphql"
-//        "https://5ahxbvmodj.execute-api.us-east-1.amazonaws.com/dev/graphql"
+//        "http://ec2-18-208-222-183.compute-1.amazonaws.com:4002/graphql"
+        "https://5ahxbvmodj.execute-api.us-east-1.amazonaws.com/dev/graphql"
     val logging = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
     val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(logging)
@@ -77,17 +77,17 @@ class MainViewModel : ViewModel() {
     }
 
     fun callInGraphQLData() {
-        val userQuery = UserQuery.builder().build()
+        val selectAllUser = SelectAllUsersQuery.builder().build()
 
-        callOkHttpApolloClient()?.query(userQuery)
-            ?.enqueue(object : ApolloCall.Callback<UserQuery.Data>() {
+        callOkHttpApolloClient()?.query(selectAllUser)
+            ?.enqueue(object : ApolloCall.Callback<SelectAllUsersQuery.Data>() {
                 override fun onFailure(e: ApolloException) {
                     Log.e(TAG, e.toString())
                 }
 
-                override fun onResponse(response: Response<UserQuery.Data>) {
+                override fun onResponse(response: Response<SelectAllUsersQuery.Data>) {
                     Log.d(TAG, response.data.toString())
-                    val user = response.data?.user()
+                    val user = response.data?.users()?.get(0)
                     _apolloText.postValue(
                         "id: " + user?.id() + "\n"
                                 + "email: " + user?.email() + "\n"
@@ -98,16 +98,15 @@ class MainViewModel : ViewModel() {
     }
 
     fun mutateGraphQLData() {
-        val createUserMutation = CreateUserMutation.builder()
-            .build()
+        val createUser = CreateMapMutation.builder().build()
 
-        callOkHttpApolloClient()?.mutate(createUserMutation)
-            ?.enqueue(object : ApolloCall.Callback<CreateUserMutation.Data>() {
+        callOkHttpApolloClient()?.mutate(createUser)
+            ?.enqueue(object : ApolloCall.Callback<CreateMapMutation.Data>() {
                 override fun onFailure(e: ApolloException) {
                     Log.e(TAG, e.toString())
                 }
 
-                override fun onResponse(response: Response<CreateUserMutation.Data>) {
+                override fun onResponse(response: Response<CreateMapMutation.Data>) {
                     Log.d(TAG, response.data.toString())
                 }
             })
