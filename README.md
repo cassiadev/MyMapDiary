@@ -1,2 +1,2 @@
 # MyMapDiary
-## Long live your place of memoir
+Long live your place of memoir
