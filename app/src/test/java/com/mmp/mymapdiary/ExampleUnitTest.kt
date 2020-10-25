@@ -2,6 +2,7 @@ package com.mmp.mymapdiary
 
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.coroutines.toDeferred
+//import com.apollographql.apollo.coroutines.await
 import com.apollographql.apollo.exception.ApolloException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking

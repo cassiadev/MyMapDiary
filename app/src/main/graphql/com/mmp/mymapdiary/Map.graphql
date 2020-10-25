@@ -9,13 +9,14 @@ query SelectAllMaps{
     }
 }
 
-mutation CreateMap{
-    createMap(user:{
-        userId: "Gary"
-        email: "gary@gary.com"
-        nickname: "Garygary"
-        description: "User to be input for createMap for Gary"
-    }){
+mutation CreateMap($user: UserInput!){
+    createMap(user:
+#    {
+#        userId: "Gary"
+#        email: "gary@gary.com"
+#        description: "User to be input for createMap for Gary"
+#    }
+    $user){
         id
         userId
         title

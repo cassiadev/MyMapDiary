@@ -11,6 +11,7 @@ import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.exception.ApolloException
 import com.mmp.mymapdiary.CreateMapMutation
 import com.mmp.mymapdiary.SelectAllUsersQuery
+import com.mmp.mymapdiary.SelectAllMapsQuery
 import kotlinx.android.synthetic.main.free_try_fragment.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -77,21 +78,21 @@ class MainViewModel : ViewModel() {
     }
 
     fun callInGraphQLData() {
-        val selectAllUser = SelectAllUsersQuery.builder().build()
+        val selectAllMaps = SelectAllMapsQuery.builder().build()
 
-        callOkHttpApolloClient()?.query(selectAllUser)
-            ?.enqueue(object : ApolloCall.Callback<SelectAllUsersQuery.Data>() {
+        callOkHttpApolloClient()?.query(selectAllMaps)
+            ?.enqueue(object : ApolloCall.Callback<SelectAllMapsQuery.Data>() {
                 override fun onFailure(e: ApolloException) {
                     Log.e(TAG, e.toString())
                 }
 
-                override fun onResponse(response: Response<SelectAllUsersQuery.Data>) {
+                override fun onResponse(response: Response<SelectAllMapsQuery.Data>) {
                     Log.d(TAG, response.data.toString())
-                    val user = response.data?.users()?.get(0)
+                    val map = response.data?.maps()?.get(5)
                     _apolloText.postValue(
-                        "id: " + user?.id() + "\n"
-                                + "email: " + user?.email() + "\n"
-                                + "create_date: " + user?.c_date()
+                        "userId: " + map?.userId() + "\n"
+                                + "title: " + map?.title()+ "\n"
+                                + "create_date: " + map?.c_date()
                     )
                 }
             })

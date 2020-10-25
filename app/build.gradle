@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.mmp.mymapdiary"
-        minSdkVersion 25
+        minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -68,8 +68,10 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.6.0'
     // For exercise
     implementation 'com.apollographql.apollo:apollo-android-support:2.0.3'
-    implementation 'com.apollographql.apollo:apollo-runtime:2.0.3'
     implementation 'com.apollographql.apollo:apollo-coroutines-support:2.0.3'
+    implementation 'com.apollographql.apollo:apollo-runtime:2.0.3'
+//    implementation 'com.apollographql.apollo:apollo-api:2.4.1'
+//    implementation 'com.apollographql.apollo:apollo-rx3-support:2.4.1'
     // JetBrains Annotation
     compileOnly("org.jetbrains:annotations:13.0")
     testCompileOnly("org.jetbrains:annotations:13.0")
@@ -89,3 +91,8 @@ dependencies {
     // Test helpers for LiveData
     testImplementation "androidx.arch.core:core-testing:$arch_version"
 }
+
+//apollo {
+//    // Instruct the compiler to generate Kotlin models
+//    generateKotlinModels.set(true)
+//}
