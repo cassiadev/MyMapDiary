@@ -44,7 +44,7 @@ class ExampleUnitTest {
 
             val maps = response.data?.maps
             if (maps == null || response.hasErrors()) {
-                // handle applicationo errors
+                // handle application errors
                 null!!
             }
 

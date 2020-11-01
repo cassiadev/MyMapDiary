@@ -11,14 +11,13 @@ query SelectAllMaps{
 
 mutation CreateMap($user: UserInput!){
     createMap(user:
-#    {
-#        userId: "Gary"
-#        email: "gary@gary.com"
-#        description: "User to be input for createMap for Gary"
-#    }
-    $user){
+    {
+        userId: "Gary"
+        , email: "gary@gary.com"
+        , description: "User to be input for createMap for Gary"
+    }){
         id
-        userId
-        title
+#        userId
+#        title
     }
 }
