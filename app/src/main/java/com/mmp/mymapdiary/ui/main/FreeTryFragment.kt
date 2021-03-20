@@ -9,7 +9,6 @@ import androidx.lifecycle.*
 import androidx.lifecycle.Observer
 import com.mmp.mymapdiary.data.main.MainViewModel
 import com.mmp.mymapdiary.databinding.FreeTryFragmentBinding
-import kotlinx.android.synthetic.main.free_try_fragment.*
 
 class FreeTryFragment: Fragment() {
     companion object {
@@ -61,9 +60,9 @@ class FreeTryFragment: Fragment() {
 
         // Regex Test
         val testerRegex = """[^0-9가-힣\u30A1-\u30F6\u30FB\u3000]""".toRegex()
-        freeTry_regex_buttonApply.setOnClickListener {
+        binding.freeTryRegexButtonApply.setOnClickListener {
 //            freeTry_regex_result.text = testerRegex.replace(freeTry_regex_input.text, "?")
-            val resultText = testerRegex.replace(freeTry_regex_input.text, "?")
+            val resultText = testerRegex.replace(binding.freeTryRegexInput.text, "?")
             mainViewModel.applyRegex(resultText)
         }
     }

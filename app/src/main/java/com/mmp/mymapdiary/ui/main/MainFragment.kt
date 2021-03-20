@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import com.mmp.mymapdiary.R
 import com.mmp.mymapdiary.databinding.MainFragmentBinding
 import com.mmp.mymapdiary.data.main.MainViewModel
-import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
 
@@ -46,7 +45,7 @@ class MainFragment : Fragment() {
         )
 
         // Go to FreeTryFragment
-        button_goToFreeTryFragment.setOnClickListener{
+        binding.buttonGoToFreeTryFragment.setOnClickListener{
             activity!!.supportFragmentManager.beginTransaction()
                 .replace(R.id.container, FreeTryFragment.newInstance())
                 .addToBackStack(null)

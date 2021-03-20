@@ -12,7 +12,6 @@ import com.apollographql.apollo.exception.ApolloException
 import com.mmp.mymapdiary.CreateMapMutation
 import com.mmp.mymapdiary.SelectAllUsersQuery
 import com.mmp.mymapdiary.SelectAllMapsQuery
-import kotlinx.android.synthetic.main.free_try_fragment.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit

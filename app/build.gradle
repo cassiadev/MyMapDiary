@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.apollographql.apollo'
 
@@ -38,11 +37,12 @@ android {
 
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 }
 
 dependencies {
-    def lifecycle_version = "2.2.0"
+    def lifecycle_version = "2.3.0"
     def arch_version = "2.1.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -81,7 +81,7 @@ dependencies {
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     // For control over item selection of both touch and mouse driven selection
-    implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc03"
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
 
     // Test
     testImplementation 'junit:junit:4.13.1'
