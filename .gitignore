@@ -13,3 +13,4 @@
 .externalNativeBuild
 .cxx
 app/src/main/java/com/mmp/mymapdiary/ExamPage.kt
+app/src/main/java/com/mmp/mymapdiary/ExamPageJava.java
